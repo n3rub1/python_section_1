@@ -37,7 +37,7 @@ The other function, f was given.
 """
 
 #the tolerance of pi function
-def approximationOfPie(approximation):
+def approximationOfPi(approximation):
     """Calculates the approximation of pi and returns the tolerance"""
     return abs(((approximation - math.pi)/math.pi)) * 100
 
@@ -57,14 +57,15 @@ while(isCalculateN):
     
 #approximate pi and pass the value to the formula for approximation
     approximation = 4*pts_in/N
-    tolerance = approximationOfPie(approximation)
+    tolerance = approximationOfPi(approximation)
     
 #if the result from the approximation is <= 0.0001, stop the loop
     if(tolerance <= 0.0001):
         isCalculateN = False
 
 #increase the value of N for each iteration, the first iteration is 1
-    N = N + 1
+    if(isCalculateN):    
+        N = N + 1
 
 """
 After the while loop stopped because the tolerance is <=0.0001% the value is printed to the console
