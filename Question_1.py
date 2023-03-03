@@ -6,18 +6,28 @@ Question 1
 """
 
 """
-This program needs the import of the math and random modules
+Math – used for the calculation of π
+Random – used to generate a random number between 0 to 1
+
 """
 
 import math
 import random
 
 """
-Firstly, the variables are declared.
-- N is the number of iterations needed to approximate pi to 0.0001%.  Starting at 1.
-- isCalculateN starts as true in order to have the while loop start, and only stops when it is put to False
-- tolerance starts at 0.  When the tolerance is <= 0.0001, the isCalculateN will turn to False
-- pts_in starts at 0 (as it did originally)
+N is used to determine how many times the program has to loop to 
+approximate pi with a tolerance of 0.0001% or less.
+
+isCalculateN is a Boolean that starts out with the value True. 
+By doing so, it is guaranteed that the while clause runs until the 
+value is set to False.
+
+tolerance starts out with the value of 0.  Throughout the program, this 
+value is modified until it is less than or equal to 0.0001%.
+
+pts_in is a given value which is used to initialize the number of points 
+within the unit circle.
+
 """
 
 #variables
@@ -29,11 +39,11 @@ pts_in = 0
 """
 Secondly, functions are declared
 
-- approximationOfPie() takes the parameter of the current while loop approximation value 
-and returns back the tolerance.  The value is forced to a positive value by using the 
-abs() method. This will make sure that the tolerance percentage calculated is returned positive.
+approximationOfPie is a function that uses the formula given in the question 
+to return the tolerance using the approximation of Pi as a parameter
 
-The other function, f was given.
+f is a predefined function that accepts a float value and outputs the result
+ using the formula provided
 """
 
 #the tolerance of pi function
@@ -46,8 +56,21 @@ def f(x):
     return math.sqrt(1. - x**2)
 
 """
-This while loop continues to run to approximate pi until the varaible isCalculateN is false. It only
-turns false when the tolerance is <= 0.0001
+As long as the isCalculateN variable has the value of True, the while
+statement is set to loop indefinitely. The random.random() method is used
+to assign a random value between 0 and 1 to two variables, xi and yi.  
+The variable pts_in is raised by one if yi is less than or equal to the 
+result of the f function.
+Using 4*(pts_in)/N, the approximation of pi is determined and stored in the
+variable - approximation.
+The approximationOfPi function receives the approximation value through its
+parameters and returns back the tolerance.
+If the tolerance is less than or equal to 0.0001, the variable isCalulateN 
+is set the false and the while loop will not iterate again.
+N is raised by 1 at the end of the loop if isCalculateN is true. This is
+done to ensure that the number of iterations is accurate when the variable
+is set to false for isCalculateN in the previous if statement.
+
 """
 #loop until the result is less than or equal to 0.0001
 while(isCalculateN):
@@ -68,7 +91,8 @@ while(isCalculateN):
         N = N + 1
 
 """
-After the while loop stopped because the tolerance is <=0.0001% the value is printed to the console
+After the loop is ready, the program prints out N, the approximated value 
+and the tolerance.
 """    
 
 print ('It took:', N, "times to approximate pi.  The approximated value is: {:.5f}".format(approximation), "and the tolarance is {:.5f}".format(tolerance) )
